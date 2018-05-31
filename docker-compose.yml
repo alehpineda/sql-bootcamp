@@ -1,0 +1,46 @@
+version: '2'
+
+# same as 
+# docker container run --name postgres -p 5432:5432
+# docker container run --name pgadmin -p 8080:80 \
+# -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
+# -e "PGADMIN_DEFAULT_PASSWORD=SuperSecret" -d dpage/pgadmin4
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SuperSecret
+      PGDATA: /data/postgres
+    volumes:
+       - pg_data:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - pgdb
+    restart: unless-stopped
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+    volumes:
+       - pg_admin:/root/.pgadmin
+       - pgadmin_data:/data
+    ports:
+      - "80:80" 
+    networks:
+      - pgdb
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+  pg_admin:
+  pgadmin_data:  
+
+networks:
+  pgdb:
