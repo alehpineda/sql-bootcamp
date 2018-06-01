@@ -92,5 +92,21 @@ from film
 join language as lan
 on lan.language_id = film.language_id;
 
+select film.film_id, film.title, inventory.inventory_id
+from film
+left outer join inventory
+on inventory.film_id = film.film_id
+where inventory.film_id is null
+order by film.film_id
+limit 100;
+
+select film.film_id, film.title, inventory.inventory_id
+from film
+left outer join inventory
+on inventory.film_id = film.film_id
+where inventory_id is null
+order by film.title
+limit 100;
+
 
 ```
