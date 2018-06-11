@@ -11,3 +11,9 @@ Previamente instalado docker y docker-compose en tu sistema operativo, corre el 
 ```bash
 docker-compose up -d
 ```
+
+Accesa a pg admin en tu navegador usando "http://localhost" o "http://127.0.0.1".
+
+Asegurate que los puertos 80 y 5432 esten libres.
+
+Si te arroja un error en los puertos 80 del pgAdmin u 5432 del postgres, cambialos a tu gusto en el archivo docker-compose.
