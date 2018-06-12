@@ -12,7 +12,7 @@ Previamente instalado docker y docker-compose en tu sistema operativo, corre el 
 docker-compose up -d
 ```
 
-Accesa a pg admin en tu navegador usando "http://localhost" o "http://127.0.0.1".
+Accesa a pg admin en tu navegador usando <http://localhost> o <http://127.0.0.1>.
 
 Asegurate que los puertos 80 y 5432 esten libres.
 
