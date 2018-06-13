@@ -106,3 +106,28 @@ insert into link_copy
 select * from link;
 
 ```
+
+### Comando UPDATE
+
+```sql
+-- Update general
+update link
+set description = 'Descripcion vacia';
+
+-- Update con where
+update link
+set description = 'Nombre inicia con A'
+where name like 'A%';
+
+-- Update de tabla A en B
+update link
+set description = name;
+
+-- Update con returning
+update link
+set description = 'Nueva descripcion'
+where id = 3
+returning id, url, name, description;
+
+
+```
